@@ -27,32 +27,18 @@ import java.util.concurrent.TimeUnit
  *
  */
 object RetrofitManager {
-
     private var client: OkHttpClient? = null
-
     private var retrofit: Retrofit? = null
-
-//    val service : ApiServices by lazy { getRetrofit() }
-//
-//    private fun getRetrofit(): ApiServices {}
-
+    val service : ApiServices by lazy { getRetrofit()!!.create(ApiServices::class.java)}
 
     private fun getRetrofit(): Retrofit? {
-
         if (retrofit == null) {
-
             synchronized(RetrofitManager::class.java) {
-
                 //添加一个 log 拦截器
-
                 val httpLoggingInterceptor = HttpLoggingInterceptor()
-
                 //设置 请求的缓存的大小跟位置
-
                 val cacheFile = File(MyApplication.context.cacheDir, "cache")
-
                 val cache = Cache(cacheFile, 1024 * 1024 * 50)
-
                 client = OkHttpClient.Builder()
                         .addInterceptor(addQueryParameterIntercptor())
                         .addInterceptor(addHeaderInterceptor())
@@ -62,48 +48,29 @@ object RetrofitManager {
                         .readTimeout(60, TimeUnit.SECONDS)
                         .writeTimeout(60, TimeUnit.SECONDS)
                         .build()
-
-
                 retrofit = Retrofit.Builder()
                         .baseUrl(UriConstant.BASE_URL)
                         .client(client)
                         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                         .addConverterFactory(GsonConverterFactory.create())
                         .build()
-
-
             }
-
         }
-
         return retrofit
     }
 
 
 
-
-    }
-
-
-
-
-
     private fun addHeaderInterceptor(): Interceptor? {
-
         return Interceptor { chain ->
-
-
             val originRequest=chain.request()
             val requestBuilder=originRequest.newBuilder()
                     .header("token",token)
                     .method(originRequest.method(),originRequest.body())
 
             val request=requestBuilder.build()
-
             chain.proceed(request)
         }
-
-
 
     }
 
@@ -117,7 +84,6 @@ object RetrofitManager {
      *
      * */
     private fun addQueryParameterIntercptor(): Interceptor? {
-
         return Interceptor { chain ->
             val originalRequest=chain.request()
             val request :Request
@@ -129,6 +95,8 @@ object RetrofitManager {
             chain.proceed(request)
         }
     }
+
+}
 
 
 
