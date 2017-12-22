@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.view
+package com.xiaoqianghe.koltin.basekoltin.view
 
 import android.content.Context
 import android.graphics.*
@@ -6,7 +6,9 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import com.hazz.kotlinmvp.R
+import com.xiaoqianghe.koltin.basekoltin.R
+
+
 
 @Suppress("IMPLICIT_CAST_TO_ANY")
 /**

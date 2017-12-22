@@ -239,7 +239,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
-            <com.hazz.kotlinmvp.view.CircleImageView
+
+
+            <com.xiaoqianghe.koltin.basekoltin.view.CircleImageView
                 android:id="@+id/toolbar_avatar"
                 android:layout_width="32dp"
                 android:layout_height="32dp"

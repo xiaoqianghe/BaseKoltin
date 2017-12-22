@@ -1,15 +1,9 @@
-package com.xiaoqianghe.koltin.basekoltin.api
-
+package com.hazz.kotlinmvp.api
 
 /**
- *
- * Author：Wq
- * Date：2017/12/21 17:38
- * Description：//todo
- *
- *
+ * Created by xuhao on 2017/11/16.
  */
-object UriConstant {
-
+object UriConstant{
     val BASE_URL = "http://baobab.kaiyanapp.com/api/"
+
 }

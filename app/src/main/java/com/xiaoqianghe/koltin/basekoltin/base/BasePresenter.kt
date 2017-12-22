@@ -11,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
  *
  *
  */
-class BasePresenter <T : IBaseView> : IPresenter<T>{
+open class BasePresenter <T : IBaseView> : IPresenter<T>{
 
     var mRootView : T? = null
         private set

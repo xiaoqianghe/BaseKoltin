@@ -1,7 +1,9 @@
 package com.xiaoqianghe.koltin.basekoltin.mvp.model
 
-import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
-import java.util.*
+import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
+import com.xiaoqianghe.koltin.basekoltin.net.RetrofitManager
+import io.reactivex.Observable
+import com.xiaoqianghe.koltin.basekoltin.rx.scheduler.SchedulerUtils
 
 
 /**
@@ -17,15 +19,20 @@ class HomeModel {
 
 
     fun requestHomeData(num:Int) : Observable<HomeBean>{
+        return RetrofitManager.service.getFirstHomeData(num)
+                .compose(SchedulerUtils.ioToMain())
 
-        return null
+
 
 
     }
 
-    fun loadMoreData() : Observable<HomeBean>{
+    fun loadMoreData(url:String) : Observable<HomeBean>{
 
-        return null
+        return RetrofitManager.service.getMoreHomeData(url)
+                .compose(SchedulerUtils.ioToMain())
+
+
 
     }
 

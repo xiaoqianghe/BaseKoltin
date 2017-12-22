@@ -1,15 +1,22 @@
 package com.xiaoqianghe.koltin.basekoltin.ui.fragment
 
+import android.app.ActivityManager
 import android.os.Bundle
+import android.support.v4.media.session.PlaybackStateCompat
+import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
+import com.hazz.kotlinmvp.net.exception.ErrorStatus
+
+import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.base.BaseActivity
 import com.xiaoqianghe.koltin.basekoltin.base.BaseFragment
 import com.xiaoqianghe.koltin.basekoltin.mvp.contract.HomeContract
+import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
 import com.xiaoqianghe.koltin.basekoltin.mvp.presenter.HomePresenter
+import com.xiaoqianghe.koltin.basekoltin.showToast
 import com.xiaoqianghe.koltin.basekoltin.ui.adapter.HomeAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
@@ -90,19 +97,47 @@ class HomeFragment : BaseFragment(),HomeContract.View {
     }
 
     override fun setHomeData(homeBean: HomeBean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Logger.d(homeBean)
+
+        // Adapter
+        mHomeAdapter = HomeAdapter(activity, homeBean.issueList[0].itemList)
+        //设置 banner 大小
+        mHomeAdapter?.setBannerSize(homeBean.issueList[0].count)
+
+        mRecyclerView.adapter = mHomeAdapter
+        mRecyclerView.layoutManager = linearLayoutManager
+        mRecyclerView.itemAnimator = DefaultItemAnimator()
+
     }
 
     override fun setMoreData(itemList: ArrayList<HomeBean.Issue.Item>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        loadingMore = false
+        mHomeAdapter?.addItemData(itemList)
+
     }
 
     override fun showError(msg: String, errorCode: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showToast(msg)
+
+        if(errorCode == ErrorStatus.NETWORK_ERROR){
+            mLayoutStatusView?.showNoNetwork()
+        }else{
+
+            mLayoutStatusView?.showError()
+
+        }
+
+
+
     }
 
     override fun lazyLoad() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+
     }
 
     override fun initView() {
@@ -125,6 +160,33 @@ class HomeFragment : BaseFragment(),HomeContract.View {
 
         mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
 
+
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val currentVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition()
+
+                if (currentVisibleItemPosition == 0) {
+                    //背景设置为透明
+                    toolbar.setBackgroundColor(getColor(R.color.color_translucent))
+                    iv_search.setImageResource(R.mipmap.ic_action_search_white)
+                    tv_header_title.text = ""
+                } else {
+                    if (mHomeAdapter?.mData!!.size > 1) {
+                        toolbar.setBackgroundColor(getColor(R.color.color_title_bg))
+                        iv_search.setImageResource(R.mipmap.ic_action_search_black)
+                        val itemList = mHomeAdapter!!.mData
+                        val item = itemList[currentVisibleItemPosition + mHomeAdapter!!.bannerItemSize - 1]
+                        if (item.type == "textHeader") {
+                            tv_header_title.text = item.data?.text
+                        } else {
+                            tv_header_title.text = simpleDateFormat.format(item.data?.date)
+                        }
+                    }
+                }
+
+
+            }
+
             override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
 
@@ -135,10 +197,20 @@ class HomeFragment : BaseFragment(),HomeContract.View {
 
                     val firstVisibleItem=(mRecyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
 
+                    if(!loadingMore){
+                        loadingMore=true
 
+                        mPresenter.loadMoreData()
+                    }
                 }
             }
         })
+
+
+
+
+
+
 
     }
 
@@ -147,5 +219,10 @@ class HomeFragment : BaseFragment(),HomeContract.View {
 
         return R.layout.fragment_home
 
+    }
+
+
+    fun getColor(colorId: Int): Int {
+        return resources.getColor(colorId)
     }
 }

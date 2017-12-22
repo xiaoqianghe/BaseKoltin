@@ -1,13 +1,13 @@
-package com.hazz.kotlinmvp.view.recyclerview.adapter
+package com.xiaoqianghe.koltin.basekoltin.view.recyclerview.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.MultipleType
+import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.ViewHolder
 
-import com.hazz.kotlinmvp.view.recyclerview.MultipleType
-import com.hazz.kotlinmvp.view.recyclerview.ViewHolder
 
 /**
  * Created by xuhao on 2017/11/22.

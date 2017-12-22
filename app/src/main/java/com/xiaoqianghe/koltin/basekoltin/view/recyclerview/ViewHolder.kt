@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.view.recyclerview
+package com.xiaoqianghe.koltin.basekoltin.view.recyclerview
 
 import android.annotation.SuppressLint
 import android.support.v7.widget.RecyclerView

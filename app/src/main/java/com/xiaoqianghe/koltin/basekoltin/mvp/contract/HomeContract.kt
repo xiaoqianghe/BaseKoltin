@@ -1,8 +1,9 @@
 package com.xiaoqianghe.koltin.basekoltin.mvp.contract
 
-import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
+
 import com.xiaoqianghe.koltin.basekoltin.base.IBaseView
 import com.xiaoqianghe.koltin.basekoltin.base.IPresenter
+import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
 
 
 /**

@@ -5,9 +5,10 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
-import com.hazz.kotlinmvp.mvp.model.bean.TabEntity
+
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.base.BaseActivity
+import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.TabEntity
 import com.xiaoqianghe.koltin.basekoltin.ui.fragment.DiscoveryFragment
 import com.xiaoqianghe.koltin.basekoltin.ui.fragment.HomeFragment
 import com.xiaoqianghe.koltin.basekoltin.ui.fragment.HotFragment
@@ -53,30 +54,84 @@ class MainActivity : BaseActivity() {
         switchFragment(mIndex)
     }
 
-    private fun switchFragment(mIndex: Int) {
+    private fun switchFragment(position: Int) {
 
         val transaction= supportFragmentManager.beginTransaction();
 
         hideFragments(transaction)
 
-        when(mIndex){
+        when(position){
 
             0
             ->if(mHomeFragment==null){
 
                 //Fragment 为null 的情况下
+                mHomeFragment = HomeFragment.getInstance(mTitles[position])
+                transaction.add(R.id.fl_container, mHomeFragment, "home")
 
             }else{
+                transaction.show(mHomeFragment)
+            }
 
+            1
+            ->if(mHomeFragment==null){
+
+                //Fragment 为null 的情况下
+                mHomeFragment = HomeFragment.getInstance(mTitles[position])
+                transaction.add(R.id.fl_container, mHomeFragment, "home")
+
+            }else{
+                transaction.show(mHomeFragment)
+            }
+
+            2
+            ->if(mHomeFragment==null){
+
+                //Fragment 为null 的情况下
+                mHomeFragment = HomeFragment.getInstance(mTitles[position])
+                transaction.add(R.id.fl_container, mHomeFragment, "home")
+
+            }else{
+                transaction.show(mHomeFragment)
+            }
+
+            3
+            ->if(mHomeFragment==null){
+
+                //Fragment 为null 的情况下
+                mHomeFragment = HomeFragment.getInstance(mTitles[position])
+                transaction.add(R.id.fl_container, mHomeFragment, "home")
+
+            }else{
+                transaction.show(mHomeFragment)
             }
 
         }
+
+        mIndex=position
+
+        tab_layout.currentTab=mIndex
+
+        transaction.commitAllowingStateLoss()
 
 
 
     }
 
     private fun hideFragments(transaction: FragmentTransaction?) {
+
+        if (null != mHomeFragment) {
+            transaction?.hide(mHomeFragment)
+        }
+        if (null != mDiscoverFragment) {
+            transaction?.hide(mDiscoverFragment)
+        }
+        if (null != mHotFragment) {
+            transaction?.hide(mHotFragment)
+        }
+        if (null != mMineFragment) {
+            transaction?.hide(mMineFragment)
+        }
 
 
 

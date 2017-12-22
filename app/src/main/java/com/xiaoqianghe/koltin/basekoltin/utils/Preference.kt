@@ -3,7 +3,8 @@ package com.hazz.kotlinmvp.utils
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
-import com.hazz.kotlinmvp.MyApplication
+import com.xiaoqianghe.koltin.basekoltin.MyApplication
+
 import java.io.*
 import kotlin.reflect.KProperty
 

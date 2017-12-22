@@ -1,9 +1,11 @@
 package com.xiaoqianghe.koltin.basekoltin.mvp.presenter
 
-import com.hazz.kotlinmvp.mvp.model.bean.HomeBean
-import com.xiaoqianghe.koltin.basekoltin.base.BaseFragment
 import com.xiaoqianghe.koltin.basekoltin.base.BasePresenter
 import com.xiaoqianghe.koltin.basekoltin.mvp.contract.HomeContract
+import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
+
+
+
 
 
 /**
@@ -14,7 +16,7 @@ import com.xiaoqianghe.koltin.basekoltin.mvp.contract.HomeContract
  *
  *
  */
-class HomePresenter :BasePresenter<HomeContract.View>(),HomeContract.Presenter {
+class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter {
 
     private var bannerHomeBean : HomeBean? = null
 

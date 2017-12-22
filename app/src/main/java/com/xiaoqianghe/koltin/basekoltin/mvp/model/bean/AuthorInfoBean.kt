@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.mvp.model.bean
+package com.xiaoqianghe.koltin.basekoltin.mvp.model.bean
 
 import java.io.Serializable
 

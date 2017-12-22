@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.view
+package com.xiaoqianghe.koltin.basekoltin.view
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -8,7 +8,8 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
-import com.hazz.kotlinmvp.R
+import com.xiaoqianghe.koltin.basekoltin.R
+
 
 /**
  * Created by xuhao on 2017/12/4.

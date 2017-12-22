@@ -12,7 +12,8 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.hazz.kotlinmvp.R;
+
+import com.xiaoqianghe.koltin.basekoltin.R;
 
 import java.lang.ref.WeakReference;
 

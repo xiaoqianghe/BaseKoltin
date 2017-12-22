@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.mvp.model.bean
+package com.xiaoqianghe.koltin.basekoltin.mvp.model.bean
 
 /**
  * Created by xuhao on 2017/11/30.

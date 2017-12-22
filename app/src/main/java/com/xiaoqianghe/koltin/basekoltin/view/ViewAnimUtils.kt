@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.view
+package com.xiaoqianghe.koltin.basekoltin.view
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter

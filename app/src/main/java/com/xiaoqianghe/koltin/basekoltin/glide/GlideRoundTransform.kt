@@ -13,7 +13,7 @@ import android.graphics.Shader
 
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation
-import com.hazz.kotlinmvp.MyApplication
+import com.xiaoqianghe.koltin.basekoltin.MyApplication
 
 import java.security.MessageDigest
 

@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.view
+package com.xiaoqianghe.koltin.basekoltin.view
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -14,7 +14,8 @@ import android.view.animation.Transformation
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.hazz.kotlinmvp.R
+import com.xiaoqianghe.koltin.basekoltin.R
+
 
 
 /**

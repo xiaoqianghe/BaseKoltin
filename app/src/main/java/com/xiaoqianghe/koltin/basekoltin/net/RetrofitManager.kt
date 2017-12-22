@@ -1,11 +1,10 @@
 package com.xiaoqianghe.koltin.basekoltin.net
 
-import android.net.Uri
+import com.hazz.kotlinmvp.api.UriConstant
 import com.hazz.kotlinmvp.utils.Preference
 import com.xiaoqianghe.koltin.basekoltin.MyApplication
-import com.xiaoqianghe.koltin.basekoltin.api.ApiServices
-import com.xiaoqianghe.koltin.basekoltin.api.UriConstant
-import io.reactivex.android.plugins.RxAndroidPlugins
+import com.xiaoqianghe.koltin.basekoltin.api.ApiService
+
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -29,7 +28,7 @@ import java.util.concurrent.TimeUnit
 object RetrofitManager {
     private var client: OkHttpClient? = null
     private var retrofit: Retrofit? = null
-    val service : ApiServices by lazy { getRetrofit()!!.create(ApiServices::class.java)}
+    val service : ApiService by lazy { getRetrofit()!!.create(ApiService::class.java)}
 
     private fun getRetrofit(): Retrofit? {
         if (retrofit == null) {
