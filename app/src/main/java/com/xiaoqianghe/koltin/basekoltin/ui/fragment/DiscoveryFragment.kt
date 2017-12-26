@@ -5,8 +5,9 @@ import android.support.v4.app.Fragment
 import com.xiaoqianghe.basekoltin.utils.StatusBarUtil
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.base.BaseFragment
+import com.xiaoqianghe.koltin.basekoltin.base.BaseFragmentAdapter
 import com.xiaoqianghe.koltin.basekoltin.view.TabLayoutHelper
-import kotlinx.android.synthetic.main.activity_profile_homepage.*
+
 import kotlinx.android.synthetic.main.fragment_hot.*
 
 

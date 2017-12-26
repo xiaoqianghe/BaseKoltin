@@ -2,11 +2,11 @@ package com.xiaoqianghe.koltin.basekoltin.ui.fragment
 
 import android.app.Fragment
 import android.os.Bundle
-import android.support.v7.widget.DialogTitle
 import com.xiaoqianghe.basekoltin.net.exception.ErrorStatus
 import com.xiaoqianghe.basekoltin.utils.StatusBarUtil
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.base.BaseFragment
+import com.xiaoqianghe.koltin.basekoltin.base.BaseFragmentAdapter
 import com.xiaoqianghe.koltin.basekoltin.mvp.contract.HomeContract
 import com.xiaoqianghe.koltin.basekoltin.mvp.contract.HotTabContract
 import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
@@ -25,24 +25,16 @@ import kotlinx.android.synthetic.main.fragment_hot.*
  *
  */
 class HotFragment : BaseFragment(),HomeContract.View, HotTabContract.View {
-    override fun setTabInfo(tabInfoBean: TabInfoBean) {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        tabInfoBean.tabInfo.tabList.mapTo(mTabTitleList) { it.name }
-        tabInfoBean.tabInfo.tabList.mapTo(mFragmentList) { RankFragment.getInstance(it.apiUrl) }
 
-        mViewPager.adapter = BaseFragmentAdapter(childFragmentManager,mFragmentList,mTabTitleList)
-        mTabLayout.setupWithViewPager(mViewPager)
-
-    }
 
 
     private val mPresenter by lazy { HotTabPresenter() }
 
     private var mTitle : String? =null
 
-    private val mTabTitleList=ArrayList<String>()
+    private val mTabTitleList= ArrayList<String>()
 
-    private val mFragmentList=ArrayList<Fragment>()
+    private val mFragmentList= ArrayList<Fragment>()
 
     companion object {
         fun getInstance(title:String) :HotFragment{
@@ -55,6 +47,16 @@ class HotFragment : BaseFragment(),HomeContract.View, HotTabContract.View {
 
             return fragment
         }
+    }
+
+    override fun setTabInfo(tabInfoBean: TabInfoBean) {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        tabInfoBean.tabInfo.tabList.mapTo(mTabTitleList) { it.name }
+        tabInfoBean.tabInfo.tabList.mapTo(mFragmentList) { RankFragment.getInstance(it.apiUrl) }
+
+        mViewPager.adapter = BaseFragmentAdapter(childFragmentManager,mFragmentList,mTabTitleList)
+        mTabLayout.setupWithViewPager(mViewPager)
+
     }
 
     init {

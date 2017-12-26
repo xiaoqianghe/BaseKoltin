@@ -6,6 +6,7 @@ import com.xiaoqianghe.koltin.basekoltin.base.BaseFragment
 import com.xiaoqianghe.koltin.basekoltin.mvp.contract.FollowContract
 import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
 import com.xiaoqianghe.koltin.basekoltin.mvp.presenter.FollowPresenter
+import com.xiaoqianghe.koltin.basekoltin.ui.adapter.FollowAdapter
 import kotlinx.android.synthetic.main.layout_recyclerview.*
 
 
@@ -31,6 +32,8 @@ class FollowFragment :BaseFragment(),FollowContract.View {
     }
 
     private val mFollowAdapter by lazy {
+
+        FollowAdapter(activity,itemList)
 
 
     }
