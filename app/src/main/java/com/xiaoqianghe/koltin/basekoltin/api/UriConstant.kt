@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.api
+package com.xiaoqianghe.basekoltin.api
 
 /**
  * Created by xuhao on 2017/11/16.

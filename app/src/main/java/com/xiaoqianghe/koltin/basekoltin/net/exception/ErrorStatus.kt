@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.net.exception
+package com.xiaoqianghe.basekoltin.net.exception
 
 /**
  * Created by xuhao on 2017/12/5.

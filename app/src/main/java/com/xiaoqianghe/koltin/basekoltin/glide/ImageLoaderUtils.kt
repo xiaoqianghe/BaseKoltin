@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.glide
+package com.xiaoqianghe.basekoltin.glide
 
 /**
  * Created by xuhao on 2017/11/27.

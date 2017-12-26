@@ -5,9 +5,8 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 
-import android.support.design.widget.TabLayout
 import android.util.Log
-import com.hazz.kotlinmvp.utils.DisplayManager
+import com.xiaoqianghe.basekoltin.utils.DisplayManager
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
 import kotlin.properties.Delegates

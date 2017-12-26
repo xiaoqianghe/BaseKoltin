@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.utils
+package com.xiaoqianghe.basekoltin.utils
 
 import android.annotation.SuppressLint
 import android.app.ActivityManager

@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.net.exception
+package com.xiaoqianghe.basekoltin.net.exception
 
 import com.google.gson.JsonParseException
 import com.orhanobut.logger.Logger

@@ -1,17 +1,18 @@
 package com.xiaoqianghe.koltin.basekoltin.ui.fragment
 
-import android.app.ActivityManager
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
-import android.support.v4.media.session.PlaybackStateCompat
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import com.hazz.kotlinmvp.net.exception.ErrorStatus
+import com.xiaoqianghe.basekoltin.net.exception.ErrorStatus
 
 import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.header.MaterialHeader
+import com.xiaoqianghe.basekoltin.utils.StatusBarUtil
 import com.xiaoqianghe.koltin.basekoltin.R
-import com.xiaoqianghe.koltin.basekoltin.base.BaseActivity
 import com.xiaoqianghe.koltin.basekoltin.base.BaseFragment
 import com.xiaoqianghe.koltin.basekoltin.mvp.contract.HomeContract
 import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
@@ -89,11 +90,19 @@ class HomeFragment : BaseFragment(),HomeContract.View {
 
 
     override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+        if (!isRefresh) {
+            isRefresh = false
+            mLayoutStatusView?.showLoading()
+        }
     }
 
     override fun dismissLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mRefreshLayout.finishRefresh()
+        mLayoutStatusView?.showContent()
+
     }
 
     override fun setHomeData(homeBean: HomeBean) {
@@ -136,6 +145,11 @@ class HomeFragment : BaseFragment(),HomeContract.View {
 
     override fun lazyLoad() {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+
+
+
+        mPresenter.requestHomeData(num)
 
 
     }
@@ -197,14 +211,25 @@ class HomeFragment : BaseFragment(),HomeContract.View {
 
                     val firstVisibleItem=(mRecyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
 
-                    if(!loadingMore){
-                        loadingMore=true
-
-                        mPresenter.loadMoreData()
+                    if(firstVisibleItem+childCount==itemCount){
+                        if(!loadingMore){
+                            loadingMore=true
+                            mPresenter.loadMoreData()
+                        }
                     }
+
                 }
             }
         })
+
+
+        iv_search.setOnClickListener { openSearchActivity() }
+
+        mLayoutStatusView = multipleStatusView
+
+        //状态栏透明和间距处理
+        StatusBarUtil.darkMode(activity)
+        StatusBarUtil.setPaddingSmart(activity, toolbar)
 
 
 
@@ -214,11 +239,27 @@ class HomeFragment : BaseFragment(),HomeContract.View {
 
     }
 
+    private fun openSearchActivity() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, iv_search, iv_search.transitionName)
+//            startActivity(Intent(activity, SearchActivity::class.java), options.toBundle())
+//        } else {
+//            startActivity(Intent(activity, SearchActivity::class.java))
+//        }
+    }
+
+
     override fun getLayoutId(): Int {
        // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
         return R.layout.fragment_home
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        mPresenter.detachView()
     }
 
 

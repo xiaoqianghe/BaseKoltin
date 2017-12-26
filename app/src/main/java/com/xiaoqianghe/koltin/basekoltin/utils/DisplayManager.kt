@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.utils
+package com.xiaoqianghe.basekoltin.utils
 
 import android.content.Context
 import android.util.DisplayMetrics

@@ -1,7 +1,7 @@
 package com.xiaoqianghe.koltin.basekoltin.net
 
-import com.hazz.kotlinmvp.api.UriConstant
-import com.hazz.kotlinmvp.utils.Preference
+import com.xiaoqianghe.basekoltin.api.UriConstant
+import com.xiaoqianghe.basekoltin.utils.Preference
 import com.xiaoqianghe.koltin.basekoltin.MyApplication
 import com.xiaoqianghe.koltin.basekoltin.api.ApiService
 

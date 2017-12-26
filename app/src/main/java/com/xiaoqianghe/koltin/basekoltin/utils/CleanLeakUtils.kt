@@ -1,9 +1,8 @@
-package com.hazz.kotlinmvp.utils
+package com.xiaoqianghe.basekoltin.utils
 
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.orhanobut.logger.Logger
 
 import java.lang.reflect.Field
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kotlin Mvp</string>
+    <string name="app_name">BaseKoltin Mvp</string>
 
     <string name="video_offline">缓存</string>
     <string name="video_attention">+ 关注</string>

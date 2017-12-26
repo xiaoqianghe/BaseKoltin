@@ -1,6 +1,7 @@
 package com.xiaoqianghe.koltin.basekoltin.base
 
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 
 
 /**
@@ -43,6 +44,11 @@ open class BasePresenter <T : IBaseView> : IPresenter<T>{
     fun checkViewAttached(){
 
         if(!isViewAttached) throw MvpViewNotAttachedException()
+    }
+
+
+    fun addSubscription(disposable: Disposable) {
+        compositeDisposable.add(disposable)
     }
 
 
