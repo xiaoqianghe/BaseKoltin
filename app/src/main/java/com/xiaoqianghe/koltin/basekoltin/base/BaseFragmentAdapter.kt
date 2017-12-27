@@ -23,7 +23,7 @@ class BaseFragmentAdapter: FragmentPagerAdapter {
         this.fragmentList = fragmentList
     }
 
-    constructor(fm: FragmentManager, fragmentList: ArrayList<android.app.Fragment>, mTitles: List<String>) : super(fm) {
+    constructor(fm: FragmentManager, fragmentList: ArrayList<Fragment>, mTitles: List<String>) : super(fm) {
         this.mTitles = mTitles
         setFragments(fm, fragmentList, mTitles)
     }

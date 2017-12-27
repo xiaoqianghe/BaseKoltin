@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
+import com.orhanobut.logger.Logger
 
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.base.BaseActivity
@@ -55,10 +56,14 @@ class MainActivity : BaseActivity() {
     }
 
     private fun switchFragment(position: Int) {
+        Logger.d("=========switchFragment")
+
 
         val transaction= supportFragmentManager.beginTransaction()
 
         hideFragments(transaction)
+
+
 
         when(position){
 
@@ -74,36 +79,14 @@ class MainActivity : BaseActivity() {
             }
 
             1
-            ->if(mHomeFragment==null){
+            ->if(mHotFragment==null){
 
                 //Fragment 为null 的情况下
-                mHomeFragment = HomeFragment.getInstance(mTitles[position])
-                transaction.add(R.id.fl_container, mHomeFragment, "home")
+                mHotFragment =HotFragment.getInstance(mTitles[position])
+                transaction.add(R.id.fl_container, mHotFragment, "home")
 
             }else{
-                transaction.show(mHomeFragment)
-            }
-
-            2
-            ->if(mHomeFragment==null){
-
-                //Fragment 为null 的情况下
-                mHomeFragment = HomeFragment.getInstance(mTitles[position])
-                transaction.add(R.id.fl_container, mHomeFragment, "home")
-
-            }else{
-                transaction.show(mHomeFragment)
-            }
-
-            3
-            ->if(mHomeFragment==null){
-
-                //Fragment 为null 的情况下
-                mHomeFragment = HomeFragment.getInstance(mTitles[position])
-                transaction.add(R.id.fl_container, mHomeFragment, "home")
-
-            }else{
-                transaction.show(mHomeFragment)
+                transaction.show(mHotFragment)
             }
 
         }
@@ -155,7 +138,7 @@ class MainActivity : BaseActivity() {
 
             }
             override fun onTabReselect(position: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
         })

@@ -1,7 +1,8 @@
 package com.xiaoqianghe.koltin.basekoltin.ui.fragment
 
-import android.app.Fragment
+
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import com.xiaoqianghe.basekoltin.net.exception.ErrorStatus
 import com.xiaoqianghe.basekoltin.utils.StatusBarUtil
 import com.xiaoqianghe.koltin.basekoltin.R

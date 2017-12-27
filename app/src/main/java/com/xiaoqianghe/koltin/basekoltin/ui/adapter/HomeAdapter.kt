@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import cn.bingoogolapple.bgabanner.BGABanner
+import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.xiaoqianghe.koltin.basekoltin.Constants
 
@@ -92,6 +93,65 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
      * 绑定布局
      */
     override fun bindData(holder: ViewHolder, data: HomeBean.Issue.Item, position: Int) {
+
+        when (getItemViewType(position)) {
+        //Banner
+            ITEM_TYPE_BANNER -> {
+                val bannerItemData: ArrayList<HomeBean.Issue.Item> = mData.take(bannerItemSize).toCollection(ArrayList())
+                val bannerFeedList = ArrayList<String>()
+                val bannerTitleList = ArrayList<String>()
+                //取出banner 显示的 img 和 Title
+                Observable.fromIterable(bannerItemData)
+                        .subscribe({ list ->
+                            bannerFeedList.add(list.data?.cover?.feed?:"")
+                            bannerTitleList.add(list.data?.title?:"")
+                        })
+
+                //设置 banner
+                with(holder) {
+                    getView<BGABanner>(R.id.banner).run {
+                        setAutoPlayAble(bannerFeedList.size > 1)
+                        setData(bannerFeedList, bannerTitleList)
+                        setAdapter(object : BGABanner.Adapter<ImageView, String> {
+                            override fun fillBannerItem(bgaBanner: BGABanner?, imageView: ImageView?, feedImageUrl: String?, position: Int) {
+//                                GlideApp.with(mContext)
+//                                        .load(feedImageUrl)
+//                                        .transition(DrawableTransitionOptions().crossFade())
+//                                        .placeholder(R.drawable.placeholder_banner)
+//                                        .into(imageView)
+
+
+
+                                Glide.with(mContext)
+                                        .load(feedImageUrl)
+                                        .transition(DrawableTransitionOptions().crossFade())
+                                        .apply(R.drawable.placeholder_banner)
+                                        .into(imageView)
+
+                            }
+                        })
+                    }
+                }
+                //没有使用到的参数在 kotlin 中用"_"代替
+                holder.getView<BGABanner>(R.id.banner).setDelegate { _, imageView, _, i ->
+
+                    goToVideoPlayer(mContext as Activity, imageView, bannerItemData[i])
+
+                }
+            }
+        //TextHeader
+            ITEM_TYPE_TEXT_HEADER -> {
+                holder.setText(R.id.tvHeader, mData[position + bannerItemSize - 1].data?.text?:"")
+            }
+
+        //content
+            ITEM_TYPE_CONTENT -> {
+                setVideoItem(holder, mData[position + bannerItemSize - 1])
+            }
+
+
+        }
+
 
 
 
