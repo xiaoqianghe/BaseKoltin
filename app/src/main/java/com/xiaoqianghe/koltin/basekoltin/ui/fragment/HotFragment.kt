@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_hot.*
  *
  *
  */
-class HotFragment : BaseFragment(),HomeContract.View, HotTabContract.View {
+class HotFragment : BaseFragment(), HotTabContract.View {
 
 
 
@@ -74,13 +74,7 @@ class HotFragment : BaseFragment(),HomeContract.View, HotTabContract.View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun setHomeData(homeBean: HomeBean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
-    override fun setMoreData(itemList: ArrayList<HomeBean.Issue.Item>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     override fun showError(errorMsg: String,errorCode:Int) {
         showToast(errorMsg)

@@ -12,19 +12,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import cn.bingoogolapple.bgabanner.BGABanner
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.xiaoqianghe.koltin.basekoltin.Constants
 
 
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.durationFormat
-import com.xiaoqianghe.koltin.basekoltin.glide.GlideApp
 import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
 import com.xiaoqianghe.koltin.basekoltin.ui.activity.VideoDetailActivity
+import com.xiaoqianghe.koltin.basekoltin.utils.GlideUtils
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.ViewHolder
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.adapter.CommonAdapter
 import io.reactivex.Observable
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+
+
 
 //com.xiaoqianghe.koltin.basekoltin.ui.adapter
 /**
@@ -121,12 +123,21 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
 //                                        .into(imageView)
 
 
+                                val options = RequestOptions()
+                                        .placeholder(R.drawable.ic_launcher)
+                                        .error(R.drawable.ic_launcher)
+                                        .diskCacheStrategy(DiskCacheStrategy.NONE)
 
-                                Glide.with(mContext)
-                                        .load(feedImageUrl)
-                                        .transition(DrawableTransitionOptions().crossFade())
-                                        .apply(R.drawable.placeholder_banner)
-                                        .into(imageView)
+                                GlideUtils.load(mContext, feedImageUrl!!, imageView!!,options)
+
+
+
+
+
+
+
+
+
 
                             }
                         })
@@ -198,27 +209,34 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
             avatar = itemData?.provider?.icon
         }
         // 加载封页图
-        GlideApp.with(mContext)
-                .load(cover)
-                .placeholder(R.drawable.placeholder_banner)
-                .transition(DrawableTransitionOptions().crossFade())
-                .into(holder.getView(R.id.iv_cover_feed))
+//        GlideApp.with(mContext)
+//                .load(cover)
+//                .placeholder(R.drawable.placeholder_banner)
+//                .transition(DrawableTransitionOptions().crossFade())
+//                .into(holder.getView(R.id.iv_cover_feed))
+
+        GlideUtils.load(mContext,cover,holder.getView(R.id.iv_cover_feed))
 
         // 如果提供者信息为空，就显示默认
-        if (avatar.isNullOrEmpty()) {
-            GlideApp.with(mContext)
-                    .load(defAvatar)
-                    .placeholder(R.mipmap.default_avatar).circleCrop()
-                    .transition(DrawableTransitionOptions().crossFade())
-                    .into(holder.getView(R.id.iv_avatar))
+//        if (avatar.isNullOrEmpty()) {
+//            GlideApp.with(mContext)
+//                    .load(defAvatar)
+//                    .placeholder(R.mipmap.default_avatar).circleCrop()
+//                    .transition(DrawableTransitionOptions().crossFade())
+//                    .into(holder.getView(R.id.iv_avatar))
+//
+//        } else {
+//            GlideApp.with(mContext)
+//                    .load(avatar)
+//                    .placeholder(R.mipmap.default_avatar).circleCrop()
+//                    .transition(DrawableTransitionOptions().crossFade())
+//                    .into(holder.getView(R.id.iv_avatar))
+//        }
 
-        } else {
-            GlideApp.with(mContext)
-                    .load(avatar)
-                    .placeholder(R.mipmap.default_avatar).circleCrop()
-                    .transition(DrawableTransitionOptions().crossFade())
-                    .into(holder.getView(R.id.iv_avatar))
-        }
+
+
+
+
         holder.setText(R.id.tv_title, itemData?.title?:"")
 
         //遍历标签

@@ -8,13 +8,12 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
 import android.view.View
 import android.widget.ImageView
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.xiaoqianghe.koltin.basekoltin.Constants
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.durationFormat
-import com.xiaoqianghe.koltin.basekoltin.glide.GlideApp
 import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
 import com.xiaoqianghe.koltin.basekoltin.ui.activity.VideoDetailActivity
+import com.xiaoqianghe.koltin.basekoltin.utils.GlideUtils
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.ViewHolder
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.adapter.CommonAdapter
 
@@ -38,11 +37,13 @@ class FollowHorizontalAdapter(mContext: Context, categoryList: ArrayList<HomeBea
         holder.setImagePath(R.id.iv_cover_feed, object : ViewHolder.HolderImageLoader(data.data?.cover?.feed!!) {
             override fun loadImage(iv: ImageView, path: String) {
                 // 加载封页图
-                GlideApp.with(mContext)
-                        .load(path)
-                        .placeholder(R.drawable.placeholder_banner)
-                        .transition(DrawableTransitionOptions().crossFade())
-                        .into(holder.getView(R.id.iv_cover_feed))
+//                GlideApp.with(mContext)
+//                        .load(path)
+//                        .placeholder(R.drawable.placeholder_banner)
+//                        .transition(DrawableTransitionOptions().crossFade())
+//                        .into(holder.getView(R.id.iv_cover_feed))
+
+                GlideUtils.load(mContext,path,holder.getView(R.id.iv_cover_feed))
             }
 
         })

@@ -1,18 +1,14 @@
 package com.xiaoqianghe.koltin.basekoltin.ui.adapter
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.graphics.Typeface
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.xiaoqianghe.koltin.basekoltin.Constants
 import com.xiaoqianghe.koltin.basekoltin.MyApplication
 import com.xiaoqianghe.koltin.basekoltin.R
-import com.xiaoqianghe.koltin.basekoltin.glide.GlideApp
 import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.CategoryBean
+import com.xiaoqianghe.koltin.basekoltin.utils.GlideUtils
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.ViewHolder
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.adapter.CommonAdapter
 
@@ -53,12 +49,14 @@ class CategoryAdapter(mContext: Context, categoryList: ArrayList<CategoryBean>, 
 
         holder.setImagePath(R.id.iv_category, object : ViewHolder.HolderImageLoader(data.bgPicture) {
             override fun loadImage(iv: ImageView, path: String) {
-                GlideApp.with(mContext)
-                        .load(path)
-                        .placeholder(R.color.color_darker_gray)
-                        .transition(DrawableTransitionOptions().crossFade())
-                        .thumbnail(0.5f)
-                        .into(iv)
+//                GlideApp.with(mContext)
+//                        .load(path)
+//                        .placeholder(R.color.color_darker_gray)
+//                        .transition(DrawableTransitionOptions().crossFade())
+//                        .thumbnail(0.5f)
+//                        .into(iv)
+
+                GlideUtils.load(mContext,path,iv)
             }
         })
 

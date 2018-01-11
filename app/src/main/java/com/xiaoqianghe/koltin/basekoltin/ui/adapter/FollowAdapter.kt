@@ -5,10 +5,9 @@ import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.xiaoqianghe.koltin.basekoltin.R
-import com.xiaoqianghe.koltin.basekoltin.glide.GlideApp
 import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
+import com.xiaoqianghe.koltin.basekoltin.utils.GlideUtils
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.MultipleType
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.ViewHolder
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.adapter.CommonAdapter
@@ -63,11 +62,14 @@ class FollowAdapter(context: Context, dataList: ArrayList<HomeBean.Issue.Item>)
          */
         holder.setImagePath(R.id.iv_avatar, object : ViewHolder.HolderImageLoader(headerData?.icon!!) {
             override fun loadImage(iv: ImageView, path: String) {
-                GlideApp.with(mContext)
-                        .load(path)
-                        .placeholder(R.mipmap.default_avatar).circleCrop()
-                        .transition(DrawableTransitionOptions().crossFade())
-                        .into(holder.getView(R.id.iv_avatar))
+//                GlideApp.with(mContext)
+//                        .load(path)
+//                        .placeholder(R.mipmap.default_avatar).circleCrop()
+//                        .transition(DrawableTransitionOptions().crossFade())
+//                        .into(holder.getView(R.id.iv_avatar))
+
+
+                GlideUtils.load(mContext,path,holder.getView(R.id.iv_avatar));
             }
 
         })

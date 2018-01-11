@@ -1,11 +1,15 @@
 package com.xiaoqianghe.koltin.basekoltin.ui.fragment
 
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import com.xiaoqianghe.basekoltin.net.exception.ErrorStatus
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.base.BaseFragment
 import com.xiaoqianghe.koltin.basekoltin.mvp.contract.FollowContract
 import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
 import com.xiaoqianghe.koltin.basekoltin.mvp.presenter.FollowPresenter
+import com.xiaoqianghe.koltin.basekoltin.showToast
 import com.xiaoqianghe.koltin.basekoltin.ui.adapter.FollowAdapter
 import kotlinx.android.synthetic.main.layout_recyclerview.*
 
@@ -82,19 +86,45 @@ class FollowFragment :BaseFragment(),FollowContract.View {
     }
 
     override fun showError(errorMsg: String, errorCode: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showToast(errorMsg)
+        if (errorCode == ErrorStatus.NETWORK_ERROR) {
+            multipleStatusView.showNoNetwork()
+        } else {
+            multipleStatusView.showError()
+        }
+
     }
 
     override fun lazyLoad() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mPresenter.requestFollowList()
+
     }
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mRecyclerView.layoutManager = LinearLayoutManager(activity)
+        mRecyclerView.adapter = mFollowAdapter
+        //实现自动加载
+        mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                val itemCount = mRecyclerView.layoutManager.itemCount
+                val lastVisibleItem = (mRecyclerView.layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
+                if (!loadingMore && lastVisibleItem == (itemCount - 1)) {
+                    loadingMore = true
+                    mPresenter.loadMoreData()
+                }
+            }
+        })
+
+        mLayoutStatusView = multipleStatusView
+
     }
 
     override fun getLayoutId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         return R.layout.layout_recyclerview
     }
 

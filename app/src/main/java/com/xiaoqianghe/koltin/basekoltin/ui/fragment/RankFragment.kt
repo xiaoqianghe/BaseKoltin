@@ -112,4 +112,10 @@ class RankFragment: BaseFragment(),RankContract.View {
 
     return R.layout.fragment_rank
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        mPresenter.detachView()
+    }
 }

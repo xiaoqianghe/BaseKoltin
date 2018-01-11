@@ -18,6 +18,8 @@ import retrofit2.http.Url
 interface ApiService{
 
     /**
+     * v2/feed?num=1
+     *
      * 首页精选
      */
     @GET("v2/feed?")

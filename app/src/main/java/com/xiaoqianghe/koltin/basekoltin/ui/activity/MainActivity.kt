@@ -79,6 +79,17 @@ class MainActivity : BaseActivity() {
             }
 
             1
+            ->if(mDiscoverFragment==null){
+
+                //Fragment 为null 的情况下
+                mDiscoverFragment =DiscoveryFragment.getInstance(mTitles[position])
+                transaction.add(R.id.fl_container, mDiscoverFragment, "home")
+
+            }else{
+                transaction.show(mDiscoverFragment)
+            }
+
+            2
             ->if(mHotFragment==null){
 
                 //Fragment 为null 的情况下
@@ -88,6 +99,20 @@ class MainActivity : BaseActivity() {
             }else{
                 transaction.show(mHotFragment)
             }
+
+            3
+            ->if(mMineFragment==null){
+
+                //Fragment 为null 的情况下
+                mMineFragment =MineFragment.getInstance(mTitles[position])
+                transaction.add(R.id.fl_container, mMineFragment, "home")
+
+            }else{
+                transaction.show(mMineFragment)
+            }
+
+
+
 
         }
 

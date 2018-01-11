@@ -7,14 +7,12 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
 import android.view.View
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
 import com.xiaoqianghe.koltin.basekoltin.Constants
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.durationFormat
-import com.xiaoqianghe.koltin.basekoltin.glide.GlideApp
 import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
 import com.xiaoqianghe.koltin.basekoltin.ui.activity.VideoDetailActivity
+import com.xiaoqianghe.koltin.basekoltin.utils.GlideUtils
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.ViewHolder
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.adapter.CommonAdapter
 
@@ -48,11 +46,15 @@ class CategoryDetailAdapter(context: Context, dataList: ArrayList<HomeBean.Issue
         val itemData = item.data
         val cover = itemData?.cover?.feed?:""
         // 加载封页图
-        GlideApp.with(mContext)
-                .load(cover)
-                .apply(RequestOptions().placeholder(R.drawable.placeholder_banner))
-                .transition(DrawableTransitionOptions().crossFade())
-                .into(holder.getView(R.id.iv_image))
+//        GlideApp.with(mContext)
+//                .load(cover)
+//                .apply(RequestOptions().placeholder(R.drawable.placeholder_banner))
+//                .transition(DrawableTransitionOptions().crossFade())
+//                .into(holder.getView(R.id.iv_image))
+
+        GlideUtils.load(mContext,cover,holder.getView(R.id.iv_image))
+
+
         holder.setText(R.id.tv_title, itemData?.title?:"")
 
         // 格式化时间
