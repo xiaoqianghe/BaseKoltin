@@ -3,6 +3,7 @@ package com.xiaoqianghe.koltin.basekoltin.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import com.xiaoqianghe.basekoltin.net.exception.ErrorStatus
 import com.xiaoqianghe.basekoltin.utils.StatusBarUtil
 import com.xiaoqianghe.koltin.basekoltin.R
@@ -54,6 +55,8 @@ class HotFragment : BaseFragment(), HotTabContract.View {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         tabInfoBean.tabInfo.tabList.mapTo(mTabTitleList) { it.name }
         tabInfoBean.tabInfo.tabList.mapTo(mFragmentList) { RankFragment.getInstance(it.apiUrl) }
+
+
 
         mViewPager.adapter = BaseFragmentAdapter(childFragmentManager,mFragmentList,mTabTitleList)
         mTabLayout.setupWithViewPager(mViewPager)

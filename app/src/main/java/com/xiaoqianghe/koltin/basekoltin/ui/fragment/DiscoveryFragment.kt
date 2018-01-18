@@ -2,6 +2,7 @@ package com.xiaoqianghe.koltin.basekoltin.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import com.xiaoqianghe.basekoltin.utils.StatusBarUtil
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.base.BaseFragment
@@ -21,12 +22,19 @@ import kotlinx.android.synthetic.main.fragment_hot.*
  */
 class DiscoveryFragment : BaseFragment() {
 
+
+
+    private var TAG : String? ="DiscoveryFragment"
+
     private val tabList=ArrayList<String>()
 
     private val fragments=ArrayList<Fragment>()
 
 
     private var mTitle : String? =null
+
+
+
 
 
     companion object {
@@ -67,13 +75,14 @@ class DiscoveryFragment : BaseFragment() {
          * getSupportFragmentManager() 替换为getChildFragmentManager()
          */
         mViewPager.adapter = BaseFragmentAdapter(childFragmentManager,fragments,tabList)
+
+        Log.d(TAG,"========mViewPager.adapter.count::"+mViewPager.adapter.count)
         mTabLayout.setupWithViewPager(mViewPager)
         TabLayoutHelper.setUpIndicatorWidth(mTabLayout)
     }
 
     override fun getLayoutId(): Int {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-
-    return R.layout.fragment_hot
+        return R.layout.fragment_hot
     }
 }

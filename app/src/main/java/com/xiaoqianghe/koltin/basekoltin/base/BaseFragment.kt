@@ -19,6 +19,8 @@ import com.classic.common.MultipleStatusView
 abstract class BaseFragment: Fragment() {
 
 
+
+
     /**
      * 视图是否加载完毕
      */
