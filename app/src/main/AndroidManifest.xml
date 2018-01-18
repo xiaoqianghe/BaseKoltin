@@ -27,7 +27,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.xiaoqianghe.koltin.basekoltin.ui.activity.VideoDetailActivity">
+        <activity android:name="com.xiaoqianghe.koltin.basekoltin.ui.activity.VideoDetailActivity"></activity>
+
+        <activity android:name="com.xiaoqianghe.koltin.basekoltin.ui.activity.WatchHistoryActivtiy">
         </activity>
 
 

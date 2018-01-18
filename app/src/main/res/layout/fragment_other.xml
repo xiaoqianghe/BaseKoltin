@@ -7,48 +7,19 @@
 
 
     <!--android:background="@color/color_title_bg"-->
-    <!--<android.support.v7.widget.Toolbar-->
-        <!--android:id="@+id/toolbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="?attr/actionBarSize"-->
-        <!--android:background="@color/color_title_bg">-->
-
-        <!--<RelativeLayout-->
-            <!--android:id="@+id/rel_toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="@color/colorAccent"-->
-            <!--&gt;-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/tv_header_title"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_centerVertical="true"-->
-                <!--android:text="@string/hot_title"-->
-                <!--android:textColor="@color/color_item_title"-->
-                <!--android:textSize="18sp"-->
-                <!--android:background="#2BBDF3"-->
-                <!--/>-->
-        <!--</RelativeLayout>-->
-    <!--</android.support.v7.widget.Toolbar>-->
-    
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/color_title_bg"
-        >
+        android:background="@color/color_title_bg">
 
         <RelativeLayout
             android:id="@+id/rel_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorAccent"
-            >
+            android:layout_height="match_parent">
+
             <TextView
-                android:id="@+id/tv_header_title"
+                android:id="@+id/tv_about_header_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -56,11 +27,10 @@
                 android:text="@string/hot_title"
                 android:textColor="@color/color_item_title"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 android:background="#2BBDF3"
                 />
         </RelativeLayout>
-
-
     </android.support.v7.widget.Toolbar>
 
     <android.support.design.widget.TabLayout
@@ -78,8 +48,7 @@
         android:layout_height="@dimen/division_line"
         android:background="@color/color_light_black"/>
 
-    <com.classic.common.MultipleStatusView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.classic.common.MultipleStatusView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/multipleStatusView"
         android:layout_width="match_parent"

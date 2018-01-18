@@ -7,6 +7,7 @@ import com.xiaoqianghe.basekoltin.utils.StatusBarUtil
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.base.BaseFragment
 import com.xiaoqianghe.koltin.basekoltin.showToast
+import com.xiaoqianghe.koltin.basekoltin.ui.activity.WatchHistoryActivtiy
 import kotlinx.android.synthetic.main.fragment_mine.*
 
 
@@ -79,7 +80,7 @@ class MineFragment :BaseFragment(), View.OnClickListener {
             v?.id==R.id.tv_mine_message -> showToast("我的消息")
             v?.id==R.id.tv_mine_attention -> showToast("我的关注")
             v?.id==R.id.tv_mine_attention -> showToast("我的缓存")
-//            v?.id==R.id.tv_watch_history -> startActivity(Intent(activity,WatchHistoryActivity::class.java))
+            v?.id==R.id.tv_watch_history -> startActivity(Intent(activity,WatchHistoryActivtiy::class.java))
             v?.id==R.id.tv_feedback -> showToast("意见反馈")
 
         }

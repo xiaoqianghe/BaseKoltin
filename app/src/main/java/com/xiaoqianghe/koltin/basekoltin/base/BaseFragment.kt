@@ -82,5 +82,14 @@ abstract class BaseFragment: Fragment() {
         super.onDestroy()
     }
 
+
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser) {
+            lazyLoadDataIfPrepared()
+        }
+    }
+
 }
 

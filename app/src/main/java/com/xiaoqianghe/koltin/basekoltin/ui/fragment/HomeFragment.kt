@@ -1,9 +1,6 @@
 package com.xiaoqianghe.koltin.basekoltin.ui.fragment
 
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -181,19 +178,22 @@ class HomeFragment : BaseFragment(),HomeContract.View {
 
                 if (currentVisibleItemPosition == 0) {
                     //背景设置为透明
-                    toolbar.setBackgroundColor(getColor(R.color.color_translucent))
+//                    toolbar.setBackgroundColor(getColor(R.color.color_translucent))
+
+                    toolbar.setBackgroundColor(getColor(R.color.color_orange))
                     iv_search.setImageResource(R.mipmap.ic_action_search_white)
-                    tv_header_title.text = ""
+                    tv_about_header_title.text = ""
                 } else {
                     if (mHomeAdapter?.mData!!.size > 1) {
                         toolbar.setBackgroundColor(getColor(R.color.color_title_bg))
+//                        toolbar.setBackgroundColor(getColor(R.color.color_d))
                         iv_search.setImageResource(R.mipmap.ic_action_search_black)
                         val itemList = mHomeAdapter!!.mData
                         val item = itemList[currentVisibleItemPosition + mHomeAdapter!!.bannerItemSize - 1]
                         if (item.type == "textHeader") {
-                            tv_header_title.text = item.data?.text
+                            tv_about_header_title.text = item.data?.text
                         } else {
-                            tv_header_title.text = simpleDateFormat.format(item.data?.date)
+                            tv_about_header_title.text = simpleDateFormat.format(item.data?.date)
                         }
                     }
                 }
