@@ -21,8 +21,6 @@ class GlideUtils {
 
 
     companion object{
-
-
         fun load(context: Context, url: String, imageView: ImageView, options: RequestOptions) {
             Glide.with(context)
                     .load(url)
@@ -30,15 +28,12 @@ class GlideUtils {
                     .into(imageView)
         }
 
-
         fun load(context: Context, url: String?, imageView: ImageView) {
-
-
             val options = RequestOptions()
-                    .placeholder(R.drawable.ic_launcher)
+                    .placeholder(R.mipmap.ic_launcher)
                     //DrawableTransitionOptions().crossFade()
 //                    .transform(DrawableTransitionOptions.withCrossFade())
-                    .error(R.drawable.ic_launcher)
+                    .error(R.mipmap.ic_launcher)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
 
             Glide.with(context)

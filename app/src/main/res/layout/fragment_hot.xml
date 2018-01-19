@@ -45,7 +45,6 @@
             android:id="@+id/rel_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent"
             >
             <TextView
                 android:id="@+id/tv_header_title"
@@ -56,7 +55,6 @@
                 android:text="@string/hot_title"
                 android:textColor="@color/color_item_title"
                 android:textSize="18sp"
-                android:background="#2BBDF3"
                 />
         </RelativeLayout>
 

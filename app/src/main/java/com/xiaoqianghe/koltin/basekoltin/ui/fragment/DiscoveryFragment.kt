@@ -64,16 +64,18 @@ class DiscoveryFragment : BaseFragment() {
         StatusBarUtil.darkMode(activity)
         StatusBarUtil.setPaddingSmart(activity,toolbar)
 //
-//        tv_header_title.text = mTitle
+        tv_header_title.text = mTitle
 
-        tv_header_title.text="BaseKoltin android"
 
-//        tabList.add("关注")
-        tabList.add("分类")
+
+
         tabList.add("关注")
-//        fragments.add(FollowFragment.getInstance("关注"))
-        fragments.add(CategoryFragment.getInstance("分类"))
+        tabList.add("分类")
+
+
         fragments.add(FollowFragment.getInstance("关注"))
+        fragments.add(CategoryFragment.getInstance("分类"))
+
 
         /**
          * getSupportFragmentManager() 替换为getChildFragmentManager()
