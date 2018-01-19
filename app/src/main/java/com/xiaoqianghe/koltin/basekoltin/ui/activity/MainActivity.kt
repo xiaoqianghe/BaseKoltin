@@ -17,13 +17,17 @@ import com.xiaoqianghe.koltin.basekoltin.ui.fragment.MineFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
+    override fun start() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun initStart() {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun initListener() {
-      //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+//    override fun initListener() {
+//      //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
 
     override fun initView() {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

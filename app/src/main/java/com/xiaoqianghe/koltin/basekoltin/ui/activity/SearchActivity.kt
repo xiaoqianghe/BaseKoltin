@@ -249,8 +249,8 @@ class SearchActivity :BaseActivity(),SearchContract.View{
             }
 
             override fun onTransitionEnd(transition: Transition) {
-                transition.removeListener(this)
-                animateRevealShow()
+//                transition.removeListener(this)
+//                animateRevealShow()
             }
 
             override fun onTransitionCancel(transition: Transition) {
