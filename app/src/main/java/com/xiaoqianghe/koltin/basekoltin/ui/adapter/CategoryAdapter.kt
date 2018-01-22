@@ -1,13 +1,17 @@
 package com.xiaoqianghe.koltin.basekoltin.ui.adapter
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import com.xiaoqianghe.koltin.basekoltin.Constants
 import com.xiaoqianghe.koltin.basekoltin.MyApplication
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.CategoryBean
+import com.xiaoqianghe.koltin.basekoltin.ui.activity.CategoryDetailActivity
 import com.xiaoqianghe.koltin.basekoltin.utils.GlideUtils
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.ViewHolder
 import com.xiaoqianghe.koltin.basekoltin.view.recyclerview.adapter.CommonAdapter
@@ -62,9 +66,9 @@ class CategoryAdapter(mContext: Context, categoryList: ArrayList<CategoryBean>, 
 
         holder.setOnItemClickListener(object : View.OnClickListener{
             override fun onClick(p0: View?) {
-//                val intent = Intent(mContext as Activity,CategoryDetailActivity::class.java)
-//                intent.putExtra(Constants.BUNDLE_CATEGORY_DATA,data)
-//                mContext.startActivity(intent)
+                val intent = Intent(mContext as Activity, CategoryDetailActivity::class.java)
+                intent.putExtra(Constants.BUNDLE_CATEGORY_DATA,data)
+                mContext.startActivity(intent)
             }
         })
     }

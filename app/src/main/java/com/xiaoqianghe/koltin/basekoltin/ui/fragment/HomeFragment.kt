@@ -1,6 +1,9 @@
 package com.xiaoqianghe.koltin.basekoltin.ui.fragment
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -15,6 +18,7 @@ import com.xiaoqianghe.koltin.basekoltin.mvp.contract.HomeContract
 import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
 import com.xiaoqianghe.koltin.basekoltin.mvp.presenter.HomePresenter
 import com.xiaoqianghe.koltin.basekoltin.showToast
+import com.xiaoqianghe.koltin.basekoltin.ui.activity.SearchActivity
 import com.xiaoqianghe.koltin.basekoltin.ui.adapter.HomeAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
@@ -142,13 +146,7 @@ class HomeFragment : BaseFragment(),HomeContract.View {
 
     override fun lazyLoad() {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-
-
-
-
         mPresenter.requestHomeData(num)
-
-
     }
 
     override fun initView() {
@@ -242,12 +240,12 @@ class HomeFragment : BaseFragment(),HomeContract.View {
     }
 
     private fun openSearchActivity() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, iv_search, iv_search.transitionName)
-//            startActivity(Intent(activity, SearchActivity::class.java), options.toBundle())
-//        } else {
-//            startActivity(Intent(activity, SearchActivity::class.java))
-//        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, iv_search, iv_search.transitionName)
+            startActivity(Intent(activity, SearchActivity::class.java), options.toBundle())
+        } else {
+            startActivity(Intent(activity, SearchActivity::class.java))
+        }
     }
 
 

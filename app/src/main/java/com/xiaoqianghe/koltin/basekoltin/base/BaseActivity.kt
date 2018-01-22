@@ -30,8 +30,9 @@ abstract class BaseActivity : AppCompatActivity(){
         setContentView(initLayoutId())
         initData()
         initView()
+        start()
 
-        initStart()
+//        initStart()
 
 
 

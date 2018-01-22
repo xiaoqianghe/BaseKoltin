@@ -40,6 +40,10 @@ import java.util.*
  *
  */
 class VideoDetailActivity :BaseActivity(),VideoDetailContract.View {
+    override fun start() {
+    //    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun showLoading() {
 //        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -142,9 +146,9 @@ class VideoDetailActivity :BaseActivity(),VideoDetailContract.View {
         }
     }
 
-    override fun initListener() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+//    override fun initListener() {
+////        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
 
     override fun initView() {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

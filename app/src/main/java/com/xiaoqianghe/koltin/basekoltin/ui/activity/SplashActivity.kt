@@ -27,6 +27,9 @@ import me.weyye.hipermission.PermissionItem
  *
  */
 class SplashActivity : BaseActivity(){
+    override fun start() {
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private var textTypeface: Typeface? =null
 
@@ -45,10 +48,10 @@ class SplashActivity : BaseActivity(){
     override fun initStart() {
        // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
-    override fun initListener() {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+//
+//    override fun initListener() {
+//        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
 
     override fun initView() {
        // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

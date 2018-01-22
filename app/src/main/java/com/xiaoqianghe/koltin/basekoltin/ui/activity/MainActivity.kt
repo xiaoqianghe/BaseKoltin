@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
     override fun start() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+      //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initStart() {

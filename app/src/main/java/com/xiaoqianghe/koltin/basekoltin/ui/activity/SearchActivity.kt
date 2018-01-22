@@ -5,14 +5,17 @@ import android.graphics.Typeface
 import android.os.Build
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.transition.Fade
 import android.transition.Transition
 import android.transition.TransitionInflater
 import android.view.KeyEvent
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import com.google.android.flexbox.*
 import com.xiaoqianghe.basekoltin.net.exception.ErrorStatus
+import com.xiaoqianghe.basekoltin.utils.CleanLeakUtils
 import com.xiaoqianghe.basekoltin.utils.StatusBarUtil
 import com.xiaoqianghe.koltin.basekoltin.MyApplication
 import com.xiaoqianghe.koltin.basekoltin.R
@@ -23,6 +26,7 @@ import com.xiaoqianghe.koltin.basekoltin.mvp.presenter.SearchPresenter
 import com.xiaoqianghe.koltin.basekoltin.showToast
 import com.xiaoqianghe.koltin.basekoltin.ui.adapter.CategoryDetailAdapter
 import com.xiaoqianghe.koltin.basekoltin.ui.adapter.HotKeywordsAdapter
+import com.xiaoqianghe.koltin.basekoltin.view.ViewAnimUtils
 import com.xiaoqianghe.koltin.basekoltin.view.ViewAnimUtils.animateRevealShow
 import kotlinx.android.synthetic.main.activity_search.*
 
@@ -36,6 +40,8 @@ import kotlinx.android.synthetic.main.activity_search.*
  *
  */
 class SearchActivity :BaseActivity(),SearchContract.View{
+
+
     override fun showError(errorMsg: String, errorCode: Int) {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
@@ -117,8 +123,6 @@ class SearchActivity :BaseActivity(),SearchContract.View{
         }
 
 
-//        mPresenter.querySearchData()
-
     }
 
     /**
@@ -131,11 +135,22 @@ class SearchActivity :BaseActivity(),SearchContract.View{
 
 
     override fun setSearchResult(issue: HomeBean.Issue) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+      //  TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+        loadingMore = false
+
+        hideHotWordView()
+        tv_search_count.visibility = View.VISIBLE
+        tv_search_count.text = String.format(resources.getString(R.string.search_result_count), keyWords, issue.total)
+
+        itemList = issue.itemList
+        mResultAdapter.addData(issue.itemList)
+
+
     }
 
     override fun initStart() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 //    override fun initListener() {
@@ -227,11 +242,26 @@ class SearchActivity :BaseActivity(),SearchContract.View{
 
 
     private fun setUpView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val animation = AnimationUtils.loadAnimation(this, android.R.anim.fade_in)
+        animation.duration = 300
+        rel_container.startAnimation(animation)
+        rel_container.visibility = View.VISIBLE
+        //打开软键盘
+        openKeyBord(et_search_view, applicationContext)
     }
 
+
+    /**
+     * 退场动画
+     */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private fun setUpExitAnimation() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val fade = Fade()
+        window.returnTransition = fade
+        fade.duration = 300
+
     }
 
 
@@ -249,8 +279,8 @@ class SearchActivity :BaseActivity(),SearchContract.View{
             }
 
             override fun onTransitionEnd(transition: Transition) {
-//                transition.removeListener(this)
-//                animateRevealShow()
+                transition.removeListener(this)
+                animateRevealShow()
             }
 
             override fun onTransitionCancel(transition: Transition) {
@@ -268,12 +298,56 @@ class SearchActivity :BaseActivity(),SearchContract.View{
     }
 
     override fun setEmptyView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initLayoutId(): Int {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     return R.layout.activity_search
+    }
+
+
+
+
+    /**
+     * 展示动画
+     */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private fun animateRevealShow() {
+        ViewAnimUtils.animateRevealShow(
+                this, rel_frame,
+                fab_circle.width / 2, R.color.backgroundColor,
+                object : ViewAnimUtils.OnRevealAnimationListener {
+                    override fun onRevealHide() {
+
+                    }
+
+                    override fun onRevealShow() {
+                        setUpView()
+                    }
+                })
+    }
+
+    // 默认回退
+    private fun defaultBackPressed() {
+        closeSoftKeyboard()
+        super.onBackPressed()
+    }
+
+    override fun onDestroy() {
+        CleanLeakUtils.fixInputMethodManagerLeak(this)
+        super.onDestroy()
+        mPresenter.detachView()
+        mTextTypeface = null
+    }
+
+
+    /**
+     * 隐藏热门关键字的 View
+     */
+    private fun hideHotWordView(){
+        layout_hot_words.visibility = View.GONE
+        layout_content_result.visibility = View.VISIBLE
     }
 
 
