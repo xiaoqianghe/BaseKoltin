@@ -45,6 +45,8 @@
 
         <activity android:name="com.xiaoqianghe.koltin.basekoltin.ui.activity.CategoryDetailActivity"></activity>
 
+        <activity android:name="com.xiaoqianghe.koltin.basekoltin.ui.activity.ProfileHomePageActivity"></activity>
+
 
 
 

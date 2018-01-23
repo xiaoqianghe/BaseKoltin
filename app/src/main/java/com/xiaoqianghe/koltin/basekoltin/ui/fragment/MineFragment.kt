@@ -7,6 +7,7 @@ import com.xiaoqianghe.basekoltin.utils.StatusBarUtil
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.base.BaseFragment
 import com.xiaoqianghe.koltin.basekoltin.showToast
+import com.xiaoqianghe.koltin.basekoltin.ui.activity.ProfileHomePageActivity
 import com.xiaoqianghe.koltin.basekoltin.ui.activity.WatchHistoryActivtiy
 import kotlinx.android.synthetic.main.fragment_mine.*
 
@@ -68,8 +69,8 @@ class MineFragment :BaseFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when{
             v?.id==R.id.iv_avatar|| v?.id==R.id.tv_view_homepage -> {
-//                val intent = Intent(activity, ProfileHomePageActivity::class.java)
-//                startActivity(intent)
+                val intent = Intent(activity, ProfileHomePageActivity::class.java)
+                startActivity(intent)
             }
             v?.id==R.id.iv_about ->{
 //                val intent = Intent(activity, AboutActivity::class.java)

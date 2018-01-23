@@ -140,7 +140,17 @@
 
                             </RelativeLayout>
 
-                            <com.xiaoqianghe.basekoltin.view.CircleImageView
+                            <!--<com.xiaoqianghe.basekoltin.view.CircleImageView-->
+                                <!--android:id="@+id/iv_avatar"-->
+                                <!--android:layout_width="80dp"-->
+                                <!--android:layout_height="80dp"-->
+                                <!--android:layout_marginStart="@dimen/padding_common"-->
+                                <!--android:src="@mipmap/img_avatar"-->
+                                <!--app:borderColor="@color/color_gray"-->
+                                <!--app:borderWidth="2dp"-->
+                                <!--app:type="circle" />-->
+
+                            <com.xiaoqianghe.koltin.basekoltin.view.CircleImageView
                                 android:id="@+id/iv_avatar"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
@@ -241,11 +251,21 @@
 
 
 
+            <!--<com.xiaoqianghe.koltin.basekoltin.view.CircleImageView-->
+                <!--android:id="@+id/toolbar_avatar"-->
+                <!--android:layout_width="32dp"-->
+                <!--android:layout_height="32dp"-->
+                <!--android:layout_marginEnd="@dimen/padding_common_d"-->
+                <!--android:src="@mipmap/img_avatar"-->
+                <!--app:borderColor="@color/color_gray"-->
+                <!--app:borderWidth="2dp"-->
+                <!--app:type="circle" />-->
+
+
             <com.xiaoqianghe.koltin.basekoltin.view.CircleImageView
-                android:id="@+id/toolbar_avatar"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginEnd="@dimen/padding_common_d"
+                android:id="@+id/toolbar_avata"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:src="@mipmap/img_avatar"
                 app:borderColor="@color/color_gray"
                 app:borderWidth="2dp"

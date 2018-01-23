@@ -71,6 +71,7 @@ class VideoDetailActivity :BaseActivity(),VideoDetailContract.View {
 
     }
 
+
     private var itemList = java.util.ArrayList<HomeBean.Issue.Item>()
 
     private val mFormat by lazy {
