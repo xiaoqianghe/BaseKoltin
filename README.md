@@ -67,7 +67,35 @@ About me: xiaoqianghe
 
     2. Koltin 与Java 的比较
 
-            空安全
+            1.易表现 :
+               Jave 编程语言的时候javaBean 类中的每一个属性 都会有对应的get()/set()方法，在koltin中只是这样子就可以实现
+                data class Data{
+                    al dataType: String,
+                    val text: String,
+                    val videoTitle: String,
+                    val id: Long,
+                    val title: String,
+                    val slogan: String?
+                    }
+
+
+
+            2.空安全:
+             Java 编程语言 的时候 大多的语言都是防御性的  很多时候我们都需要去判断一些异常 如 NullPointerException 空指针异常 等
+             但是 Koltin 语言中很多是空安全的  只需要通过一个简单的操作符 就能实现 大段的判断
+
+
+
+            3.函数式支持 ：
+
+             如 当我实现某一个按钮的点击事件 的时候  我们不用去实现去内部类 而是直接去代码实现我们自己的业务操作逻辑即可
+
+            4.转换便捷
+
+            将Java自动转换为Kotlin - JetBrains将IntelliJ集成了一个新功能，将Java转换为Kotlin，节省了大量的时间。而且它也节省了我们重新编写世代代码。
+
+
+
 
 
 =====关于Koltin的修饰词=====
