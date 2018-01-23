@@ -2,11 +2,16 @@
 About me: xiaoqianghe
 
 
+
+
+
+
+
 项目介绍:
 
         Koltin 编程语言
 
-        Mvp 框架 +Retrofit+ RxJave
+        Mvp +Retrofit+ RxJave
 
         视频播放
 
@@ -26,10 +31,43 @@ About me: xiaoqianghe
 
     1. Koltin 的介绍
 
+        Kotlin，它是JetBrains开发的基于JVM的语言。JetBrains因为创造了
+        一个强大的Java开发IDE被大家所熟知。Android Studio，官方的Android IDE，就
+        是基于Intellij，作为一个该平台的插件。
+        Kotlin是使用Java开发者的思维被创建的，Intellij作为它主要的开发IDE。对于
+        Android开发者，有两个有趣的特点：
+        对Java开发者来说，Kotlin是非常直觉化的，并且非常容易学习。语言的大部
+        分内容都是与我们知道的非常相似，不同的地方，它的基础概念也能迅速地掌
+        握它。
+        它与我们日常生活使用的IDE无需配置就能完全整合。Android Studio能够非常
+        完美地理解、编译运行Kotlin代码。而且对这门语言的支持来正是自于开发了
+        这个IDE的公司本身，所以我们Android开发者是一等公民。
+        但是这仅仅是开发语言和开发工具之间的整合。相比Java 7的优势到底是什么呢？
+
+        它更加易表现：这是它最重要的优点之一。你可以编写少得多的代码。
+
+        它更加安全：Kotlin是空安全的，也就是说在我们编译时期就处理了各种null的
+        情况，避免了执行时异常。如果一个对象可以是null，则我们需要明确地指定
+        它，然后在使用它之前检查它是否是null。你可以节约很多调试空指针异常的
+        时间，解决掉null引发的bug。
+
+        它是函数式的：Kotlin是基于面向对象的语言。但是就如其他很多现代的语言
+        那样，它使用了很多函数式编程的概念，比如，使用lambda表达式来更方便地
+        解决问题。其中一个很棒的特性就是Collections的处理方式。
+
+        它可以扩展函数：这意味着我们可以扩展类的更多的特性，甚至我们没有权限
+        去访问这个类中的代码。
+
+        它是高度互操作性的：你可以继续使用所有的你用Java写的代码和库，因为两
+        个语言之间的互操作性是完美的。甚至可以在一个项目中使用Kotlin和Java两
+        种语言混合编程
+
 
 
 
     2. Koltin 与Java 的比较
+
+            空安全
 
 
 =====关于Koltin的修饰词=====
@@ -185,7 +223,7 @@ About me: xiaoqianghe
 
 
 
-    9.  as?操作符
+    10.  as?操作符
 
            当使用 as 转型的时候，可能会经常出现 ClassCastException。 所以，现在可以使as?安全转型，当转型不成功的时候，它会返回 null。
 
@@ -194,7 +232,7 @@ About me: xiaoqianghe
            val m: Int? = a as? Int
 
 
-    10  冒号：
+    11  冒号：
 
         用于类的继承，变量的定义
         1、类型和超类型之间的冒号前要有一个空格
@@ -207,7 +245,7 @@ About me: xiaoqianghe
         class TestActivity<T : Serializable>(str: String) : Activity{}
 
 
-     11. 类型判断符 is
+     12. 类型判断符 is
 
         检查某个实例是否是某个类型，如果判断出属于某个类型，那么判断后的分支中可以直接可当该类型使用，无需显示转换
 
@@ -220,10 +258,72 @@ About me: xiaoqianghe
 
 
 
+     13. 多行输入符 三个双引号
+
+         三引号的形式用来输入多行文本，也就是说在三引号之间输入的内容将被原样保留，之中的单号和双引号不用转义，其中的不可见字符比如/n和/t都会被保留。
+
+         val str = """
+                 one
+                 two
+                     """
+         //等价于
+         val str = "one\ntwo"
+         val str =  "one" +"\n"+"two"
+
+
+
+     14 .$操作符
+
+        字符串可以包含模板表达式，及一小段代码，会求值并把结果包含到字符串中。模板字符串以美元符号$开头，由一个简单的名字构成：
+
+        val value:Int=5;
+        val str:String="the value is $value"
+
+        println("itemB:$itemB")
+
+        //字符串模板
+        var userInfo = "name:${user.name},  age:$age"
+
+
+
+=====关于Koltin的基本类型=====
+
+四. Koltin的基本类型
+
+     1.数字
+
+
+        Kotlin 提供了如下的内置类型来表示数字（与 Java 很相近）：
+
+        Type	Bit width
+        Double	64
+        Float	32
+        Long	64
+        Int	32
+        Short	16
+        Byte	8
+
+
+
+      2. 数组
+
+
+      数组在 Kotlin 中使用 Array 类来表示，它定义了 get 和 set 函数（按照运算符重载约定这会转变为 []）和 size 属性，以及一些其他有用的成员函数：
+
+          class Array<T> private constructor() {
+              val size: Int
+              operator fun get(index: Int): T
+              operator fun set(index: Int, value: T): Unit
+
+              operator fun iterator(): Iterator<T>
+              // ……
+          }
 
 
 
 
+
+=====关于Koltin的回调函数=====
 
 
 
