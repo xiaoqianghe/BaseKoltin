@@ -4,9 +4,22 @@ About me: xiaoqianghe
 
 项目介绍:
 
+        Koltin 编程语言
+
+        Mvp 框架 +Retrofit+ RxJave
+
+        视频播放
+
+
+
+
+
+
+
 
 
 ==================关于Koltin的介绍=========================
+
 一. 关于Koltin
 
     1. Koltin 的介绍
