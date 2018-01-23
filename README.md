@@ -68,31 +68,51 @@ About me: xiaoqianghe
     2. Koltin 与Java 的比较
 
             1.易表现 :
-               Jave 编程语言的时候javaBean 类中的每一个属性 都会有对应的get()/set()方法，在koltin中只是这样子就可以实现
-                data class Data{
-                    al dataType: String,
-                    val text: String,
-                    val videoTitle: String,
-                    val id: Long,
-                    val title: String,
-                    val slogan: String?
-                    }
+                   Jave 编程语言的时候javaBean 类中的每一个属性 都会有对应的get()/set()方法，在koltin中只是这样子就可以实现
+                    data class Data{
+                        al dataType: String,
+                        val text: String,
+                        val videoTitle: String,
+                        val id: Long,
+                        val title: String,
+                        val slogan: String?
+                        }
 
 
 
             2.空安全:
-             Java 编程语言 的时候 大多的语言都是防御性的  很多时候我们都需要去判断一些异常 如 NullPointerException 空指针异常 等
-             但是 Koltin 语言中很多是空安全的  只需要通过一个简单的操作符 就能实现 大段的判断
+                 Java 编程语言 的时候 大多的语言都是防御性的  很多时候我们都需要去判断一些异常 如 NullPointerException 空指针异常 等
+                 但是 Koltin 语言中很多是空安全的  只需要通过一个简单的操作符 就能实现 大段的判断
 
 
 
             3.函数式支持 ：
 
-             如 当我实现某一个按钮的点击事件 的时候  我们不用去实现去内部类 而是直接去代码实现我们自己的业务操作逻辑即可
+                 如 当我实现某一个按钮的点击事件 的时候  我们不用去实现去内部类 而是直接去代码实现我们自己的业务操作逻辑即可
+
+
+                 这个特性支持在现有类的基础上扩展方法，特别是系统库中的类，因为如果是我们自定义的类，那么扩展和添加方法没有什么差别。
+
+                 方法定义
+
+                 fun getArtict(): Artist? {
+                     return null
+                 }
+                 Kotlin中是以fun关键字声明方法，没有返回值时不需要在方法名后面写任何类型，默认是Unit类型（可写可不写，但其和null不是一回事，所以不写返回值类型或者写了Unit后不能够返回null）。
+
+
+
+                 fun String.printStr() {
+                     println("printStr: " + this)
+                 }
+
+                 var str = "testExtend"
+                 str.printStr()
+                 上面代码为类String扩展了一个printStr()，这在Java中是不可能的。因为Java中如果既不能改变原有类，又想在其基础上添加方法，就得通过新建类来继承的方式。而现实是Java中只能是单继承，这个机会太珍贵了，更残酷的是有些类还是不能继承的。
 
             4.转换便捷
 
-            将Java自动转换为Kotlin - JetBrains将IntelliJ集成了一个新功能，将Java转换为Kotlin，节省了大量的时间。而且它也节省了我们重新编写世代代码。
+                将Java自动转换为Kotlin - JetBrains将IntelliJ集成了一个新功能，将Java转换为Kotlin，节省了大量的时间。而且它也节省了我们重新编写世代代码。
 
 
 
