@@ -115,7 +115,8 @@ class SearchActivity :BaseActivity(),SearchContract.View{
 
         mRecyclerView_hot.layoutManager = flexBoxLayoutManager
         mRecyclerView_hot.adapter = mHotKeywordsAdapter
-        //设置 Tag 的点击事件
+        //设置 Tag 的点击事件  自定义Koltin 回调
+        //xiang挡雨 空参数传入
         mHotKeywordsAdapter?.setOnTagItemClickListener {
             closeSoftKeyboard()
             keyWords = it

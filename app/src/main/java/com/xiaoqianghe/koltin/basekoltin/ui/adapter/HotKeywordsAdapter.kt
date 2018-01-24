@@ -23,12 +23,16 @@ class HotKeywordsAdapter(mContext: Context, mList:ArrayList<String>, layoutId:In
 
 
 
-    private var mOnTagItemClick : ((tag: String) -> Unit)? =null
 
 
+    //自定义Koltin 会回调函数
+    private var mOnTagItemClick : ((tag: String) -> Unit)? =null//说明mOnTagIitmClick 是一个函数 (单方法入口 参数是String)
+
+
+    //
     fun setOnTagItemClickListener(onTagItemClickListener:(tag:String) -> Unit){
 
-        this.mOnTagItemClick = onTagItemClickListener
+        this.mOnTagItemClick = onTagItemClickListener  //等同于  onTagItemClickListener.invoke()方法的调用
 
     }
 

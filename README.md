@@ -373,7 +373,77 @@ About me: xiaoqianghe
 
 =====关于Koltin的回调函数=====
 
+五.Koltin 的回调与监听
 
+
+    1. 正常的思维的代码
+    class Person {
+        val name:String = "Person"
+        lateinit var mListen: MyInterface //接口可以延时加载
+
+        fun setListeren(listen: MyInterface){
+            this.mListen = listen
+            this.mListen?.poo(" poo :" +name)
+        }
+
+        interface MyInterface {
+            fun poo(str: String)
+        }
+    }
+
+
+    fun main(args: Array<String>) {
+        println("Hello, world!")
+        var person = Person()
+        person.setListeren(object : Person.MyInterface {//object的作用是调用内部匿名类
+            override fun poo(str:String) {
+                println(str)
+            }
+         })
+    }
+
+    2. 使用Koltin 简化代码
+
+        class Person {
+            val name:String = "Person"
+            lateinit var mListen: (String) -> Unit // 声明mListen是一个函数（单方法接口）,入参String，无返回值
+
+            fun setListeren(listener: (String) -> Unit){
+                this.mListen = listener
+                this.mListen("invoke :" +name) //等于 mListen?.invoke("invoke :" +name)  X()等同于X.invoke()
+
+            }
+
+            //不再需要声明接口类！
+        }
+
+        fun main(args: Array<String>) {
+            println("Hello, world!")
+            var person = Person()
+            person.setListeren{ println(it) }  // 只有一个参数的简化结果 it代表入参 String类
+        }
+
+
+
+=====Kolltin 一些注意的区别======
+
+    lateinit 和 lazy 是 Kotlin 中的两种不同的延迟初始化技术。
+
+    1.lazy{} 只能用在val类型, lateinit 只能用在var类型 如 ：
+
+    val name: String by lazy { "sherlbon" }
+    lateinit var adapter: MyAdapter
+
+    2.lateinit不能用在可空的属性上和java的基本类型上 如：
+
+    lateinit var age: Int  //会报错
+
+    3.lateinit可以在任何位置初始化并且可以初始化多次。而lazy在第一次被调用时就被初始化，想要被改变只能重新定义
+
+    4.lateinit 有支持（反向）域（Backing Fields）
+
+
+=====这个DelegateRegister就是委托类=====
 
 
 
