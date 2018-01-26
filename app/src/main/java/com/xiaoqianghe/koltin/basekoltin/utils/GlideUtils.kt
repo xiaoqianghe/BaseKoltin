@@ -30,10 +30,10 @@ class GlideUtils {
 
         fun load(context: Context, url: String?, imageView: ImageView) {
             val options = RequestOptions()
-                    .placeholder(R.mipmap.ic_launcher)
+                    .placeholder(R.mipmap.iv_place_bg)
                     //DrawableTransitionOptions().crossFade()
 //                    .transform(DrawableTransitionOptions.withCrossFade())
-                    .error(R.mipmap.ic_launcher)
+                    .error(R.mipmap.iv_err_bg)
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
 
             Glide.with(context)

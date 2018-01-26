@@ -154,6 +154,23 @@
                 android:text="@string/mine_cache"
                 android:textSize="14sp" />
 
+
+            <TextView
+                android:id="@+id/tv_watch_dowload"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center|center_horizontal"
+                android:text="@string/view_dowload"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_watch_local"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center|center_horizontal"
+                android:text="@string/view_local"
+                android:textSize="14sp" />
+
             <TextView
                 android:id="@+id/tv_watch_history"
                 android:layout_width="match_parent"

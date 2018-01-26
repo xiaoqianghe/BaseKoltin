@@ -124,8 +124,8 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
 
 
                                 val options = RequestOptions()
-                                        .placeholder(R.drawable.ic_launcher)
-                                        .error(R.drawable.ic_launcher)
+                                        .placeholder(R.mipmap.iv_place_bg)
+                                        .error(R.mipmap.iv_err_bg)
                                         .diskCacheStrategy(DiskCacheStrategy.NONE)
 
                                 GlideUtils.load(mContext, feedImageUrl!!, imageView!!,options)
