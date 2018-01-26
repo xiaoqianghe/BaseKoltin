@@ -13,6 +13,8 @@ import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.shuyu.gsyvideoplayer.listener.LockClickListener
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
+import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer
+import com.xiaoqianghe.basekoltin.utils.CleanLeakUtils
 import com.xiaoqianghe.basekoltin.utils.StatusBarUtil
 import com.xiaoqianghe.basekoltin.utils.WatchHistoryUtils
 import com.xiaoqianghe.koltin.basekoltin.Constants
@@ -40,6 +42,21 @@ import java.util.*
  *
  */
 class VideoDetailActivity :BaseActivity(),VideoDetailContract.View {
+
+//    override fun onDestroy() {
+//        super.onDestroy()
+//
+//        mVideoView
+//    }
+
+
+    override fun onDestroy() {
+        CleanLeakUtils.fixInputMethodManagerLeak(this)
+        super.onDestroy()
+        GSYVideoPlayer.releaseAllVideos()
+        orientationUtils?.releaseListener()
+        mPresenter.detachView()
+    }
     override fun start() {
     //    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -358,4 +375,6 @@ class VideoDetailActivity :BaseActivity(),VideoDetailContract.View {
 
 
     }
+
+
 }
