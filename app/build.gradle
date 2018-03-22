@@ -6,15 +6,123 @@ apply plugin: 'kotlin-android-extensions' //扩展插件
 
 
 
+
+def androidVer = rootProject.ext.android
+
+def keystoreFilepath = ''
+def keystorePSW = ''
+def keystoreAlias = ''
+def keystoreAliasPSW = ''
+// default keystore file, PLZ config file path in local.properties
+def keyfile = file('s.keystore.temp')
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
+Properties properties = new Properties()
+// local.properties file in the root director
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+keystoreFilepath = properties.getProperty("keystore.path")
+
+if (keystoreFilepath) {
+    keystorePSW = properties.getProperty("keystore.password")
+    keystoreAlias = properties.getProperty("keystore.alias")
+    keystoreAliasPSW = properties.getProperty("keystore.alias_password")
+    keyfile = file(keystoreFilepath)
+}
+
+
+
 android {
-//    signingConfigs {
-////        config {
-////            keyAlias 'ktmp'
-////            keyPassword 'ktmp123456'
-////            storeFile file('../ktmp.jks')
-////            storePassword 'ktmp123456'
-////        }
-//    }
+
+    signingConfigs {
+
+        config {
+            keyAlias keystoreAlias
+            keyPassword keystoreAliasPSW
+            storeFile keyfile
+            storePassword keystorePSW
+        }
+    }
+    compileSdkVersion androidVer.compileSdkVersion
+    defaultConfig {
+        minSdkVersion androidVer.minSdkVersion
+        targetSdkVersion androidVer.targetSdkVersion
+        versionCode androidVer.versionCode
+        versionName androidVer.versionName
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+
+            signingConfig signingConfigs.config
+        }
+    }
+    flavorDimensions "versionCode"
+    productFlavors {
+        //online update
+//        1. app.gradle
+//        2.RetrofitClient
+//        3.ApiService （版本， h5url）
+//        4.LoginFragment
+
+//        0
+        basekoltin {
+            applicationId 'com.xiaoqianghe.koltin.basekoltin'
+            signingConfig signingConfigs.config
+            manifestPlaceholders = [
+                    APP_ID: "com.xiaoqianghe.koltin.basekoltin",
+//                    APP_ORGNAME  : "超级银行家",
+////                    APP_ORGNAME  : "风清扬",
+////                    APP_ORGNAME  : "测试红包组织1",
+//                    JPUSH_PKGNAME: "com.eeepay.superbanker",
+//                    JPUSH_APPKEY : "2b971a0b54feed33ed374173",
+//                    JPUSH_CHANNEL: "Android",
+
+            ]
+        }
+//        1
+        wqkoltin {
+            applicationId 'com.xiaoqianghe.koltin.wqkoltin'
+            signingConfig signingConfigs.config
+            manifestPlaceholders = [
+                    APP_ID: "com.xiaoqianghe.koltin.wqkoltin",
+//                    APP_ORGNAME  : "微银家",
+//                    JPUSH_PKGNAME: "com.eeepay.superbanker.wyj",
+//                    JPUSH_APPKEY : "2b971a0b54feed33ed374173",
+//                    JPUSH_CHANNEL: "wyj",
+
+            ]
+        }
+
+
+        xmkoltin {
+            applicationId 'com.xiaoqianghe.koltin.xmkoltin'
+            signingConfig signingConfigs.config
+            manifestPlaceholders = [
+                    APP_ID: "com.xiaoqianghe.koltin.xmkoltin",
+//                    APP_ORGNAME  : "微银家",
+//                    JPUSH_PKGNAME: "com.eeepay.superbanker.wyj",
+//                    JPUSH_APPKEY : "2b971a0b54feed33ed374173",
+//                    JPUSH_CHANNEL: "wyj",
+
+            ]
+        }
+    }
+
+
+
+
+
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
@@ -66,10 +174,27 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
-    productFlavors {
 
 
+    //配置签名打包 输出的apk 的文件名
+    applicationVariants.all { variant ->
+        if (variant.buildType.name.equals('release')) {
+            variant.outputs.all { output ->
+                def buildName = variant.flavorName
+                def type = variant.buildType.name
+                def releaseApkName = buildName + '_' + type + "_" + versionName + '_' + releaseTime() + '.apk'
+                outputFileName = releaseApkName
+            }
+        } else {
+            variant.outputs.all { output ->
+                def buildName = variant.flavorName
+                def releaseApkName = buildName + '_' + "debug" + "_" + versionName + '_' + releaseTime() + '.apk'
+                outputFileName = releaseApkName
+
+            }
         }
+    }
+
 
 
 

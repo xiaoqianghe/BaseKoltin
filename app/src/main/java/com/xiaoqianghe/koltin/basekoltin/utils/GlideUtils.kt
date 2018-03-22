@@ -46,6 +46,18 @@ class GlideUtils {
 
 
 
+        /**
+         *
+         * @todo：
+         *
+         * @params url  图片链接
+         * @Params imageView 图片控件
+         *          placeholder_resoourceId  默认图片的资源Id
+         *          error_resourceId         报错的图片的资源Id
+         *
+         *
+         *
+         * */
         fun load(context: Context, url: String, imageView: ImageView,placeholder_resourceId:Int ,error_resourceId:Int) {
             val options = RequestOptions()
                     .placeholder(placeholder_resourceId)
