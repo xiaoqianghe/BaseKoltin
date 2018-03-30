@@ -1,10 +1,7 @@
 package com.xiaoqianghe.koltin.basekoltin.api
 
 
-import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.AuthorInfoBean
-import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.CategoryBean
-import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.HomeBean
-import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.TabInfoBean
+import com.xiaoqianghe.koltin.basekoltin.mvp.model.bean.*
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -84,6 +81,16 @@ interface ApiService{
      */
     @GET("v4/pgcs/detail/tab?")
     fun getAuthorInfo(@Query("id") id: Long):Observable<AuthorInfoBean>
+
+
+    /**
+     * 校验版本
+     */
+    @GET("v4/tabs/checkVersionData")
+    fun checkVersionData():Observable<UpdataVersionRsBean>
+
+
+
 
 
 

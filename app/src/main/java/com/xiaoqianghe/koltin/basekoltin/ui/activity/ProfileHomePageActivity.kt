@@ -88,7 +88,9 @@ class ProfileHomePageActivity :BaseActivity() {
 
 
         //github地址
-        refreshLayout.setOnRefreshListener {  mWebView.loadUrl("https://github.com/xiaoqianghe/BaseKoltin") }
+//        refreshLayout.setOnRefreshListener {  mWebView.loadUrl("https://github.com/xiaoqianghe/BaseKoltin") }
+
+        refreshLayout.setOnRefreshListener {  mWebView.loadUrl("https://github.com") }
         refreshLayout.autoRefresh()
 
         mWebView.settings.javaScriptEnabled = true

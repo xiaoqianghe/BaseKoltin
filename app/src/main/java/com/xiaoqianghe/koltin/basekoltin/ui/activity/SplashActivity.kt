@@ -11,6 +11,9 @@ import com.xiaoqianghe.basekoltin.utils.AppUtils
 import com.xiaoqianghe.koltin.basekoltin.MyApplication
 import com.xiaoqianghe.koltin.basekoltin.R
 import com.xiaoqianghe.koltin.basekoltin.base.BaseActivity
+import com.xiaoqianghe.koltin.basekoltin.mvp.contract.SplashContract
+import com.xiaoqianghe.koltin.basekoltin.mvp.presenter.SearchPresenter
+import com.xiaoqianghe.koltin.basekoltin.mvp.presenter.SplashPresenter
 import com.xiaoqianghe.koltin.basekoltin.showToast
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.android.synthetic.main.activity_splash.view.*
@@ -27,7 +30,27 @@ import kotlinx.android.synthetic.main.activity_splash.view.*
  *
  *
  */
-class SplashActivity : BaseActivity(){
+class SplashActivity : BaseActivity(),SplashContract.View{
+
+
+    private val mPresenter by lazy {
+        SplashPresenter()
+    }
+
+
+
+    override fun showLoading() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun dismissLoading() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showVersionData() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun initStart() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -69,6 +92,9 @@ class SplashActivity : BaseActivity(){
 //        tv_splash_desc.typeface = descTypeface
         tv_version_name.text = "v${AppUtils.getVerName(MyApplication.context)}"
 
+
+        tv_splash_desc.text="每日"+this.getString(R.string.app_name)+"，让你大开眼界"
+
         //渐变展示启动屏 nk
 
 
@@ -99,6 +125,9 @@ class SplashActivity : BaseActivity(){
             override fun onAnimationEnd(p0: Animation?) {
 //                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 
+
+//                checkOutVersion()//检查版本更新
+
                 redirectTo()
             }
 
@@ -113,6 +142,18 @@ class SplashActivity : BaseActivity(){
 //        checkPermission()
 
 
+    }
+
+
+    /**
+     *
+     * @todo 检测版本更新
+     *
+     * */
+    private fun checkOutVersion() {
+       // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+        mPresenter.checkViewData();
     }
 
 

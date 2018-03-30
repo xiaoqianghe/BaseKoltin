@@ -81,12 +81,8 @@ android {
             signingConfig signingConfigs.config
             manifestPlaceholders = [
                     APP_ID: "com.xiaoqianghe.koltin.basekoltin",
-//                    APP_ORGNAME  : "超级银行家",
-////                    APP_ORGNAME  : "风清扬",
-////                    APP_ORGNAME  : "测试红包组织1",
-//                    JPUSH_PKGNAME: "com.eeepay.superbanker",
-//                    JPUSH_APPKEY : "2b971a0b54feed33ed374173",
-//                    JPUSH_CHANNEL: "Android",
+                   APP_ORGNAME  : "尚优视",
+
 
             ]
         }
@@ -96,10 +92,8 @@ android {
             signingConfig signingConfigs.config
             manifestPlaceholders = [
                     APP_ID: "com.xiaoqianghe.koltin.wqkoltin",
-//                    APP_ORGNAME  : "微银家",
-//                    JPUSH_PKGNAME: "com.eeepay.superbanker.wyj",
-//                    JPUSH_APPKEY : "2b971a0b54feed33ed374173",
-//                    JPUSH_CHANNEL: "wyj",
+                   APP_ORGNAME  : "i尚优视",
+
 
             ]
         }
@@ -110,10 +104,8 @@ android {
             signingConfig signingConfigs.config
             manifestPlaceholders = [
                     APP_ID: "com.xiaoqianghe.koltin.xmkoltin",
-//                    APP_ORGNAME  : "微银家",
-//                    JPUSH_PKGNAME: "com.eeepay.superbanker.wyj",
-//                    JPUSH_APPKEY : "2b971a0b54feed33ed374173",
-//                    JPUSH_CHANNEL: "wyj",
+                    APP_ORGNAME  : "米尚优视",
+
 
             ]
         }
