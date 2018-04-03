@@ -32,6 +32,10 @@ import kotlinx.android.synthetic.main.activity_splash.view.*
  */
 class SplashActivity : BaseActivity(),SplashContract.View{
 
+    override fun showError(errorMsg: String, errorCode: Int) {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 
     private val mPresenter by lazy {
         SplashPresenter()

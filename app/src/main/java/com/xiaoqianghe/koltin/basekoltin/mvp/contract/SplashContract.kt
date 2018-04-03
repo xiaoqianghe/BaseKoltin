@@ -18,6 +18,8 @@ interface SplashContract {
 
         fun showVersionData()
 
+        fun showError(errorMsg: String,errorCode:Int)
+
     }
 
     interface Presenter: IPresenter<View>{

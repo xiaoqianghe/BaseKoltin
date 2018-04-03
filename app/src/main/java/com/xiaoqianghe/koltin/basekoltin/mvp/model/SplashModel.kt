@@ -17,7 +17,6 @@ import io.reactivex.Observable
 class SplashModel {
 
     fun  requestVersionData(): Observable<UpdataVersionRsBean>? {
-
         return RetrofitManager.service.checkVersionData()
                 .compose(SchedulerUtils.ioToMain())
 
