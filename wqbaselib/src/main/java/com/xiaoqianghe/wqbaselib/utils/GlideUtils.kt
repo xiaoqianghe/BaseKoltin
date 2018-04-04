@@ -7,6 +7,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.xiaoqianghe.koltin.basekoltin.R
+import com.xiaoqianghe.wqbaselib.R
 
 
 /**
@@ -30,7 +31,7 @@ class GlideUtils {
 
         fun load(context: Context, url: String?, imageView: ImageView) {
             val options = RequestOptions()
-                    .placeholder(R.mipmap.iv_place_bg)
+                    .placeholder(com.xiaoqianghe.koltin.basekoltin.R.mimap.iv_place_bg)
                     //DrawableTransitionOptions().crossFade()
 //                    .transform(DrawableTransitionOptions.withCrossFade())
                     .error(R.mipmap.iv_err_bg)

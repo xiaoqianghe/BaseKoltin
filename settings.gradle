@@ -1,1 +1,1 @@
-include ':app', ':multiple-status-view', ':wqbaselib'
+include ':app', ':multiple-status-view'
